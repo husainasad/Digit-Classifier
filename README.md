@@ -9,6 +9,6 @@ The classifier model is trained on MNIST dataset and has ~99.2% accuracy on test
 ### Instructions to setup
 Use command 'python index.py' in cmd terminal to run the flask local server<br>
 Copy the localhost IP address from terminal<br>
-Open 'ImageUploader' project in android studio<br>
+Open 'DigitClassifier' project in android studio<br>
 Replace the BASE_URL string value in the file APIContract.java with the localhost IP address from flask server. <br>
 Run the android application<br>
