@@ -6,10 +6,10 @@ import matplotlib.pyplot as plt
 import cv2
 import numpy as np
 from numpy import argmax
-from keras.models import load_model
-from flask_ngrok import run_with_ngrok
+from tensorflow.keras.models import load_model
+from werkzeug.debug import DebuggedApplication
+
 app = Flask(__name__)
-run_with_ngrok(app)
 
 @app.route('/', methods=['POST'])
 def handle_request():
@@ -78,13 +78,15 @@ def load_image(img):
 def test_image(img):
   img = load_image(img)
   # load model
-  model = load_model('ImageClassifier.h5')
+  model = load_model('DigitClassifier.h5')
   # predict the class
   predict_value = model.predict(img)
   digit = argmax(predict_value)
   print("Predicted Digit is ", digit)
   return digit
  
-app.run()
+# app.run()
 # if __name__ == "__main__":
-#   app.run(host='0.0.0.0', port=5000, debug=True)
+#   app.run(host='0.0.0.0', port=5000, debug=False)
+    
+app.run(host='0.0.0.0', port=5000, debug=False)
